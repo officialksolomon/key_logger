@@ -1,14 +1,13 @@
 import smtplib
-from asyncio.windows_events import NULL
 
 import config
 from exceptions import NoOrIncompleteConfigException
-from Utils import check_variables_exist
+from utils import check_variables_exist
 
 
 class EmailSender:
     def __init__(self) -> None:
-        self.server: smtplib.SMTP_SSL = NULL
+        self.server: smtplib.SMTP_SSL = None
 
     def __enter__(self):
         self.connect()
@@ -39,7 +38,7 @@ class EmailSender:
         return message
 
     def send_mail(
-        self, receiver_email: str, subject, message, sender_email: str = None
+        self, receiver_email: str, subject: str, message, sender_email: str = None
     ):
         message = self.compose_message(sender_email, receiver_email, subject, message)
         self.server.sendmail(sender_email or config.FROM_EMAIL, receiver_email, message)

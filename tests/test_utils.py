@@ -9,7 +9,7 @@ class TestUtils(unittest.TestCase):
         # Arrange
         module = types.SimpleNamespace(
             EMAIL_HOST="smtp.privateemail.com",
-            EMAIL_PORT=587,
+            EMAIL_PORT=465,
             EMAIL_USER="user@example.com",
             EMAIL_PASSWORD="password",
         )
